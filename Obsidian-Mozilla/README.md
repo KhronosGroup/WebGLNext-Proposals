@@ -470,7 +470,7 @@ var stagingBuffer = device.createBuffer({
   usage: ObBufferUsage.TRANSFER_SRC_BIT,
 });
 var stagingMemory = device.allocateMemory(hostMemoryType, stagingBuffer.getMemoryRequirements());
-device.mapBufferMemory(stagingBuffer, stagingMemory, 0);
+device.bindBufferMemory(stagingBuffer, stagingMemory, 0);
 device.uploadBuffer(stagingBuffer, 0, new Float32Array([
   // X     Y    Z    W     R    G    B    A
   -0.7, -0.7, 0.0, 1.0,  1.0, 0.0, 0.0, 0.0,
@@ -484,7 +484,7 @@ var vertexBuffer = device.createBuffer({
   usage: ObBufferUsage.TRANSFER_DST_BIT | ObBufferUsage.VERTEX_BUFFER_BIT,
 });
 var deviceBufferMemory = device.allocateMemory(deviceMemoryType, vertexBuffer.getMemoryRequirements());
-device.mapBufferMemory(vertexBuffer, deviceBufferMemory, 0);
+device.bindBufferMemory(vertexBuffer, deviceBufferMemory, 0);
 
 // the PSO initialization part
 var vertexBinding = 0;
